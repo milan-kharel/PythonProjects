@@ -7,7 +7,6 @@ def alarm(seconds):
     while time_elapsed < seconds:
         time.sleep(1)
         time_elapsed += 1
-
         time_left = seconds - time_elapsed
         minutes_left = time_left // 60
         seconds_lef = time_left %60
