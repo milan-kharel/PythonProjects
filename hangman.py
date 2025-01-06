@@ -18,8 +18,10 @@ def play(word):
     print("\n")
 
     while not guessed and tries > 0:
+
         guess = input("please guess a lettr:").upper()
-        if len(guess) == 1 and guess.isalpha(): #check if input is a sigle letter
+
+        if len(guess) == 1 and guess.isalpha(): #check if input is a single letter
             if guess in guessed_letters:
                 print("U already guessed the letter",guess)
             elif guess not in word:
@@ -29,18 +31,34 @@ def play(word):
             else:
                 print("good job", guess, "is correct word")
                 guessed_letters.append(guess)
-                
 
-
-
-
-
-
-
-
-
-
-
+                word_as_list = list(word_completion)
+                indices = [i for i, letter in enumerate(word) if letter == guess]
+                for index in indices:
+                    word_as_list[index] = guess
+                    word_completion = "".join(word_as_list)
+                    if "_" not in word_completion:
+                        guessed = True
+        elif len(guess) == len(word) and guess.isalpha():
+            if guess in guessed_words:
+                print ("U already guessed it",guess)
+            elif guess != word:
+                print(guess, "is not in the word")
+                tries -= 1
+                guessed_words.append(guess)
+            else:
+                guessed = True
+                word_completion = word
+        else:
+            print("not a valid guess.")
+        print(display_hangman(tries))
+        print(word_completion)
+        print("\n")
+    if guessed:
+        print("congrats, u guessed the word, U Win!")
+    else:
+        print("Boooo! U ran out of tries. The word was " +word+"Maybe Next Time!")
+                    
 
 
 
