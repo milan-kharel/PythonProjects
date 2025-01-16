@@ -1,0 +1,32 @@
+Task 1: Introduction
+
+first we run this to import dataset from "!git clone https://github.com/am1tyadav/superhero"
+
+here we open the file then read the file after which we store it in data variable also we see 100 dataset names
+#with open('superhero/superheroes.txt','r') as f
+#  data = f.read()
+#data[:100]
+
+we then import tensorflow and check its version 
+import tensorflow as tf
+print (tf.__version__)
+
+Tokenizer converts character into numeric represetation to all the iteams in our vocabulary.
+also in below we filter symbols and give spaces/split
+tokenizer = tf.keras.preprocessing.text.Tokenizer(
+    filters='!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~',
+    split='\n',
+)
+
+we then fit the tokenizer along with our data 
+tokenizer.fit_on_texts(data)
+
+now code or nlp is able to converts wequence of character to sequence of numbers
+
+Task 2: Data and Tokenizer
+Task 3: Names and Sequences
+Task 4: Creating Examples
+Task 5: Training and Validation Sets
+Task 6: Creating the Model
+Task 7: Training the Model
+Task 8: Generating Names
