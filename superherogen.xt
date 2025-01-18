@@ -21,7 +21,11 @@ tokenizer = tf.keras.preprocessing.text.Tokenizer(
 we then fit the tokenizer along with our data 
 tokenizer.fit_on_texts(data)
 
-now code or nlp is able to converts wequence of character to sequence of numbers
+now code or nlp is able to converts sequence of character to sequence of numbers Char to index and Index to char dictionaries
+char_to_index = tokenizer.word_index
+index_to_char = dict((v, k) for k, v in char_to_index.items())
+
+print(index_to_char)
 
 Task 2: Data and Tokenizer
 Task 3: Names and Sequences
