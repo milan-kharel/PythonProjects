@@ -7,6 +7,8 @@ here we open the file then read the file after which we store it in data variabl
 #  data = f.read()
 #data[:100]
 
+Task 2: Data and Tokenizer
+
 we then import tensorflow and check its version 
 import tensorflow as tf
 print (tf.__version__)
@@ -27,8 +29,27 @@ index_to_char = dict((v, k) for k, v in char_to_index.items())
 
 print(index_to_char)
 
-Task 2: Data and Tokenizer
 Task 3: Names and Sequences
+
+names = data.splitlines()
+names[:8]
+
+if we want to convert name into a sequence than we need to use tokenizer
+
+tokenizer.texts_to_sequences(names[0]) #sequence of number is formed of the given name
+
+we make a function to convert names into sequence while eradicating extra dimensions
+
+def name_to_seq(name):
+  return [tokenizer.texts_to_sequences(c)[0][0] for c in name]
+name_to_seq(names[2])
+
+oposite of converting back the sequence to our name that was initially there
+
+def seq_to_name(seq):
+  return ''.join([index_to_char[i] for i in seq if i != 0])
+seq_to_name(name_to_seq(names[2]))
+
 Task 4: Creating Examples
 Task 5: Training and Validation Sets
 Task 6: Creating the Model
