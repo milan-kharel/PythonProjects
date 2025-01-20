@@ -51,6 +51,27 @@ def seq_to_name(seq):
 seq_to_name(name_to_seq(names[2]))
 
 Task 4: Creating Examples
+
+#creating list of sequences that we have in our dataset
+
+sequences = []
+for name in names:
+  seq = name_to_seq(name)
+  if len(seq) >= 2:
+    sequences += [seq[:i] for i in range(2, len(seq) + 1)]
+
+sequences[:10] # generates the sequences
+
+max_len = max([len(x)for x in sequences])
+print(max_len) # tells us the longest name present in our dataset
+
+padded_sequences = tf.keras.preprocessing.sequence.pad_sequences(   # method in tensorflow
+    sequences, padding = 'pre', maxlen = max_len
+)
+print(padded_sequences[0]) # gives us sthe padded_sequences of our first name in dataset at initial phase
+
+padded_sequences.shape # gives padded_sequences of our total dataset
+
 Task 5: Training and Validation Sets
 Task 6: Creating the Model
 Task 7: Training the Model
