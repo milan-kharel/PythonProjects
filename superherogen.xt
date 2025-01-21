@@ -73,6 +73,24 @@ print(padded_sequences[0]) # gives us sthe padded_sequences of our first name in
 padded_sequences.shape # gives padded_sequences of our total dataset
 
 Task 5: Training and Validation Sets
+
+# code below prepares the data for training by separating the input sequences all characters except the last from the target output the last character for each superhero name. The model will be trained to predict the next character (y) based on the previous characters (x).
+
+x, y = padded_sequences[:, :-1], padded_sequences[:, -1]
+print(x.shape, y.shape)
+
+# code is responsible for splitting the dataset into training and testing sets
+
+from sklearn.model_selection import train_test_split           #function to split dataset
+x_train, x_test, y_train, y_test = train_test_split(x, y)
+print(x_train.shape, y_train.shape)
+print(x_test.shape, y_test.shape)
+
+# here we are calculating and displaying the size of the "alphabet" (set of unique characters) used in the superhero names
+
+num_chars = len(char_to_index.keys()) + 1
+print(num_chars)
+
 Task 6: Creating the Model
 Task 7: Training the Model
 Task 8: Generating Names
