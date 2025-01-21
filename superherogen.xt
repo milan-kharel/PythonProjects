@@ -94,7 +94,28 @@ print(num_chars)
 
 Task 6: Creating the Model
 
+# Build the model with explicit input shape
+model = Sequential([
+    Embedding(input_dim=num_chars, output_dim=8, input_length=max_len - 1),  # Embedding layer
+    Conv1D(64, kernel_size=5, strides=1, activation='tanh', padding='causal'),  # Conv1D layer
+    MaxPooling1D(pool_size=2),  # MaxPooling layer
+    LSTM(32),  # LSTM layer
+    Dense(num_chars, activation='softmax')  # Output layer
+])
 
+# Compile the model
+model.compile(
+    loss='sparse_categorical_crossentropy',
+    optimizer='adam',
+    metrics=['accuracy']
+)
+
+# Force TensorFlow to build the model by explicitly running summary
+# This ensures the layers are initialized and shape is inferred
+model.build(input_shape=(None, max_len - 1))
+
+# Display the model summary to verify the output
+model.summary()
 
 Task 7: Training the Model
 Task 8: Generating Names
