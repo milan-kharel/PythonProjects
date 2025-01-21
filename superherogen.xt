@@ -87,10 +87,14 @@ print(x_train.shape, y_train.shape)
 print(x_test.shape, y_test.shape)
 
 # here we are calculating and displaying the size of the "alphabet" (set of unique characters) used in the superhero names
+# as of before we have only 28 vocab we add 0 as special kind of vocab for the use
 
 num_chars = len(char_to_index.keys()) + 1
 print(num_chars)
 
 Task 6: Creating the Model
+
+
+
 Task 7: Training the Model
 Task 8: Generating Names
