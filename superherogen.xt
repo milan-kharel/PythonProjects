@@ -118,4 +118,16 @@ model.build(input_shape=(None, max_len - 1))
 model.summary()
 
 Task 7: Training the Model
+
+we train our data through the help of model developed above
+
+h = model.fit(
+    x_train, y_train,
+    validation_data=(x_test, y_test),
+    epochs=50, verbose=2,
+    callbacks=[
+        tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=3)
+    ]
+)
+
 Task 8: Generating Names
