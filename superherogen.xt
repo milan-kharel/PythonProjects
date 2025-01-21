@@ -130,4 +130,28 @@ h = model.fit(
     ]
 )
 
+we see graph of Training along with the accuracy overtime model got trained
+
+from matplotlib import pyplot as plt
+epochs_ran = len(h.history['loss'])
+
+plt.plot(range(0, epochs_ran), h.history['val_accuracy'], label='Validation')
+plt.plot(range(0, epochs_ran), h.history['accuracy'], label='Training')
+plt.legend()
+plt.show()
+
 Task 8: Generating Names
+
+def generate_names(seed):
+  for i in range(0,40):
+    seq = name_to_seq(seed)
+    padded = tf.keras.preprocessing.sequence.pad_sequences([seq], padding='pre',maxlen=max_len-1, truncating='pre')
+    pred = model.predict(padded)[0]
+    pred_char = index_to_char[tf.argmax(pred).numpy()]
+    seed += pred_char
+
+    if pred_char == '\t':
+      break
+    print(seed)
+
+    generate_names('Milan')
