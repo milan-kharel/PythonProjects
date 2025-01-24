@@ -32,7 +32,18 @@ class Employee():
         if day.weekday() == 5 or day.weekday() == 6:
             return False
         return True
-    
+
+    #special methds
+
+    def __repr__(self):
+        return "Employee('{}', '{}', '{}')".format(self.first, self.last, self.pay)
+
+    def __str__(self):
+        return '{} - {}'.format(self.fullname(), self.email)
+
+    def __add__(self, other):
+        return self.pay + other.pay
+
 class Developer(Employee):
     raise_amount = 1.25
 
@@ -60,21 +71,27 @@ class Manager(Employee):
         for emp in self.employees:
             print('--->', emp.fullname())
 
-dev_1 = Developer('Milan', 'Kharel', 50000, 'Python')
-dev_2 = Developer('Melon', 'Musk', 60000, 'Java')
+emp_1 = Employee('Milan', 'Kharel', 50000)
+emp_2 = Employee('Milan', 'Kharel', 65000)
+dev_1 = Developer('Melon', 'Musk', 60000, 'Java')
 
 mgr_1 = Manager('Mahesh','Sah', 95000, [dev_1])
 
-print(mgr_1.email)
+print(emp_1+emp_2)
 
-mgr_1.add_emp(dev_2)
-mgr_1.remove_emp(dev_1)
+# print(emp_1.__repr__())
+# print(emp_1.__str__())
 
-mgr_1.print_emps()
+# print(mgr_1.email)
 
-print(isinstance(mgr_1, Manager)) #checks the instances
+# mgr_1.add_emp(dev_2)
+# mgr_1.remove_emp(dev_1)
 
-print(issubclass(Developer, Employee))
+# mgr_1.print_emps()
+
+# print(isinstance(mgr_1, Manager)) #checks the instances
+
+# print(issubclass(Developer, Employee))
 
 # print(dev_1.email)
 # print(dev_1.prog_lang)
