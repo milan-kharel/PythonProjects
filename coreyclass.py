@@ -71,13 +71,15 @@ class Manager(Employee):
         for emp in self.employees:
             print('--->', emp.fullname())
 
-emp_1 = Employee('Milan', 'Kharel', 50000)
-emp_2 = Employee('Milan', 'Kharel', 65000)
-dev_1 = Developer('Melon', 'Musk', 60000, 'Java')
+emp_1 = Employee('Milan', 'Kharel')
 
-mgr_1 = Manager('Mahesh','Sah', 95000, [dev_1])
+# emp_1 = Employee('Milan', 'Kharel', 50000)
+# emp_2 = Employee('Milan', 'Kharel', 65000)
+# dev_1 = Developer('Melon', 'Musk', 60000, 'Java')
 
-print(emp_1+emp_2)
+# mgr_1 = Manager('Mahesh','Sah', 95000, [dev_1])
+
+# print(emp_1+emp_2)
 
 # print(emp_1.__repr__())
 # print(emp_1.__str__())
